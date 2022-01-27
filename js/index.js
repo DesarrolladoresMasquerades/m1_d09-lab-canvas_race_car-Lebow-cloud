@@ -2,10 +2,10 @@
 const myObstacles = [];
 // bring the road image
 var road = new Image();
-road.src = "/m1_d09-lab-canvas_race_car-Lebow-cloud/images/road.png";
+road.src = "/images/road.png";
 
 var car = new Image();
-car.src = "/m1_d09-lab-canvas_race_car-Lebow-cloud/images/car.png";
+car.src = "/images/car.png";
 
 // LOAD
 window.onload = () => {
@@ -39,7 +39,9 @@ function updateGameArea() {
   updateObstacles();
 }
 
-function updateObstacles() {     // NEED TO FIND THE RIGHT ALGORITHIM
+/* NEED TO FIND THE RIGHT ALGORITHIM
+
+function updateObstacles() {     
   for (let i = 0; i < myObstacles.length; i++) {
     myObstacles[i].x += -1;
     myObstacles[i].update()
@@ -63,7 +65,24 @@ function updateObstacles() {     // NEED TO FIND THE RIGHT ALGORITHIM
     );
   }
 }
-
+*/function updateObstacles() {     
+  for (let i = 0; i < myObstacles.length; i++) {
+    myObstacles[i].x += -1;
+    myObstacles[i].update()
+    
+  }
+  gameArea.frames += 1;
+  if (gameArea.frames % 120 === 0) {
+    let y = 0;
+    let maxWidth = 50;
+    let minGap = 50;
+    let maxGap = 200;
+    let x = Math.random() * ((maxGap - minGap + 1) + minGap)
+    
+    myObstacles.push(new Component(19, 20, "orange", x - maxWidth , y));
+    myObstacles.push( new Component(19,20, "orange", x, y));
+  }
+}
 // -----ATTACH CAR TO THE KEYBORAD------MOVEMENT
 
 document.addEventListener("keydown", (e) => {
