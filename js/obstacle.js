@@ -1,30 +1,28 @@
 class Obstacle {
-    constructor(ctx){
+    constructor(ctx,x,y,width,height){
         this.ctx = ctx
-        this.obstacleImg = {
-            img: new Image(),
-            x: Math.floor(Math.random() *440 + 30),
-            y: 150,
-            width: 80,
-            height: 160,
-            ay: 0.9
-        }
-        this.obstacleImg.img.src = "/images/obstacle-middle.png"
+        this.x = x
+        this.y = y
+        this. width = width
+        this.height = height
+        this.ay = 0.9
+        this.img = new Image()
+        this.img.src = "/images/obstacle-middle.png"
     }
 
     move() {
         
-        this.obstacleImg.y += this.obstacleImg.ay
+        this.y += this.ay
     }
     
 
     draw() {
         this.ctx.drawImage(
-            this.obstacleImg.img,
-            this.obstacleImg.x,
-            this.obstacleImg.y,
-            this.obstacleImg.width,
-            this.obstacleImg.height,
+            this.img,
+            this.x,
+            this.y,
+            this.width,
+            this.height,
            
             
         )

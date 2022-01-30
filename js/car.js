@@ -28,19 +28,19 @@ class Car {
               switch (key) {
                 case 37:
                 case 65:
-                  if (this.x >= 10) this.x -= 20;
+                  this.carImg.x -= 20;
                   break;
                 case 38:
                 case 87:
-                  if (this.y >= 10) this.y -= 20;
+                   this.carImgy -= 20;
                   break;
                 case 39:
                 case 83:
-                  if (this.x <= 490 - this.width) this.x += 20;
+                  this.carImg.x += 20;
                   break;
                 
                 case 68:
-                  if (this.y <= 690 - this.height) this.y += 20;
+                  if (this.carImg.y <= 690 - this.carImg.height) this.carImg.y += 20;
                   break;
               }
             }
@@ -58,6 +58,18 @@ class Car {
            
             
         )
+    }
+
+    collidesWith(cappuccino){
+      return (this.x < cappuccino.x + cappuccino.width) &&
+      this.x + this.width > cappuccino.x &&
+      this.y < cappuccino.y + cappuccino.height &&
+      this.y + this.height > cappuccino.y
+    }
+
+    exitsCanvas() {
+      console.log("star fuera")
+      return this.x > this.ctx.canvas.width || this.x + this.width < 0;
     }
 
 
